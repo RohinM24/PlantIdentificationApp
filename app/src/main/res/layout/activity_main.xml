@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F7F7F7"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- 📸 Image preview -->
+        <ImageView
+            android:id="@+id/previewImage"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginBottom="12dp"
+            android:scaleType="centerCrop"
+            android:background="#DDDDDD"
+            android:contentDescription="Preview image" />
+
+        <!-- 🎛 Controls row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnSelect"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="📷 Select Image" />
+
+            <Button
+                android:id="@+id/btnIdentify"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🌿 Identify"
+                android:enabled="false"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- 🧠 Organ selection -->
+        <Spinner
+            android:id="@+id/organSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/plant_organs"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Progress bar -->
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyleLarge" />
+
+        <!-- 🌱 Confidence bar -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confidence"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp" />
+
+        <ProgressBar
+            android:id="@+id/confidenceBar"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:max="100"
+            android:progress="0"
+            android:layout_marginBottom="16dp" />
+
+        <!-- PlantNet Result Section -->
+        <TextView
+            android:id="@+id/resultText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Plant identification result will appear here..."
+            android:padding="12dp"
+            android:textSize="15sp"
+            android:background="#FFFFFF"
+            android:elevation="2dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Trefle Extra Section -->
+        <TextView
+            android:id="@+id/trefleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Growing and farming details will appear here..."
+            android:textSize="15sp"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:elevation="2dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Wikipedia Fallback -->
+        <TextView
+            android:id="@+id/wikiText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Plant description will appear here..."
+            android:textSize="14sp"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:elevation="2dp"
+            android:layout_marginBottom="24dp" />
+
+    </LinearLayout>
+</ScrollView>

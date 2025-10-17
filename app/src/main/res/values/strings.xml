@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Roleaf</string>
+
+    <string-array name="organs_array">
+        <item>leaf</item>
+        <item>flower</item>
+        <item>fruit</item>
+        <item>bark</item>
+    </string-array>
+
+    <string-array name="plant_organs">
+        <item>leaf</item>
+        <item>flower</item>
+        <item>fruit</item>
+        <item>bark</item>
+        <item>habit</item>
+    </string-array>
+
+</resources>
+
