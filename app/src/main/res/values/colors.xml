@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 🌿 Core RoLeaf Theme Colors -->
+    <color name="emerald">#2E8B57</color>          <!-- Primary green accent -->
+    <color name="dark_green">#0C1E14</color>       <!-- App background -->
+    <color name="accent_green">#1DB954</color>     <!-- Glowing highlights -->
+    <color name="card_beige">#F5F3E7</color>       <!-- Card / button background -->
+    <color name="muted_green">#B8CBB3</color>      <!-- Subtext and headers -->
+    <color name="on_dark">#E9EAE8</color>          <!-- Text on dark backgrounds -->
+
+    <!-- Optional gradients / extras -->
+    <color name="emerald_light">#5DE39A</color>    <!-- Lighter shade for gradients -->
+    <color name="emerald_dark">#1E5E3E</color>     <!-- Darker shade for depth -->
+
+</resources>

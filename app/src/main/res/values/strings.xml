@@ -1,20 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Roleaf</string>
 
-    <string-array name="organs_array">
-        <item>leaf</item>
-        <item>flower</item>
-        <item>fruit</item>
-        <item>bark</item>
-    </string-array>
+    <!-- 🌱 App Name -->
+    <string name="app_name">RoLeaf</string>
 
-    <string-array name="plant_organs">
-        <item>leaf</item>
-        <item>flower</item>
-        <item>fruit</item>
-        <item>bark</item>
-        <item>habit</item>
-    </string-array>
+    <!-- 🌿 Splash Screen Tagline -->
+    <string name="splash_tagline">Discover the world through nature.</string>
+
+    <!-- 🌸 UI Labels -->
+    <string name="start_prompt">Start by adding photos of your plant.</string>
+    <string name="identify_button">Identify</string>
+    <string name="refresh_button">Refresh</string>
+
+    <!-- 🌼 Organ Labels -->
+    <string name="organ_leaf">Leaf</string>
+    <string name="organ_flower">Flower</string>
+    <string name="organ_fruit">Fruit</string>
+    <string name="organ_bark">Bark</string>
+
+    <!-- 🔄 Identifying State -->
+    <string name="identifying_text">Identifying your plant…</string>
+
+    <!-- 🌳 Result Cards -->
+    <string name="card_plantnet">PlantNet</string>
+    <string name="card_trefle">Trefle</string>
+    <string name="card_wikipedia">Wikipedia</string>
+
+    <!-- 🌤 Growth Bar Labels -->
+    <string name="growth_light">Light</string>
+    <string name="growth_humidity">Humidity</string>
+    <string name="growth_ph">pH</string>
 
 </resources>
+
 

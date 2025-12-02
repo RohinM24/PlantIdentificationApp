@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Splash attributes only for Android 12+ -->
+    <style name="Theme.SplashScreen" parent="Theme.SplashScreen.IconBackground">
+        <item name="android:windowSplashScreenBackground">#0C1E14</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_roleaf_logo</item>
+        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.Roleaf</item>
+    </style>
+
+</resources>
