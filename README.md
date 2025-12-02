@@ -1,188 +1,175 @@
-🌱 RoLeaf — AI-Powered Plant Identifier
+RoLeaf
 
-RoLeaf is a Kotlin-based Android application that allows users to identify plants from images using the PlantNet API
-, and enriches the results with detailed plant data from Trefle.io
- and descriptions from Wikipedia
-.
+Plant Identification Android Application (Kotlin + Jetpack Compose + Retrofit)
 
-The app provides an intuitive and responsive UI that works seamlessly with images from the camera or gallery, making plant identification accessible and engaging.
+RoLeaf is an Android application that allows users to identify plants by taking or uploading photos. The app integrates the PlantNet API for recognition and enriches results using Trefle and Wikipedia, providing comprehensive species information in a modern, clean UI.
 
-🖼️ Features
+Features
+Plant Identification
 
-✅ Plant Identification (via PlantNet API)
-Upload or capture a plant photo to identify its species, family, and genus with confidence scores.
+Take a photo or upload from gallery
 
-✅ Detailed Plant Data (via Trefle API)
-Fetch in-depth plant info — including growth, foliage, flower, and habitat — using verified botanical datasets.
+Multiple organ selection (leaf, flower, fruit, bark, etc.)
 
-✅ Wikipedia Fallback Integration
-Automatically fetches plain-language summaries when Trefle data is incomplete.
+Uploads image(s) to the PlantNet API
 
-✅ Camera or Gallery Image Input
-Choose between taking a live photo or selecting one from your device’s gallery.
+Displays top species matches with confidence scores
 
-✅ Confidence Visualization
-Displays a dynamic progress bar representing the PlantNet match confidence.
+Plant Information Retrieval
 
-✅ Modern Android Architecture
+Automatically fetches plant details from Trefle (taxonomy, common names, images, growth info, etc.)
 
-Kotlin Coroutines
+Wikipedia integration for summaries and additional context
 
-Retrofit 2 (for networking)
+Defensive fallback logic for missing fields across APIs
 
-OkHttp (with interceptors)
+Automatic slug sanitization for Trefle API compatibility
 
-Glide (for image loading)
+User Interface
 
-MVVM-friendly structure
+Jetpack Compose UI
 
-🧩 Tech Stack
-Component	Technology
-Language	Kotlin
-UI Framework	Android XML Layouts
-Networking	Retrofit 2 + OkHttp 4.12
-Image Loading	Glide 4.16
-JSON Parsing	Gson
-Asynchronous Tasks	Kotlin Coroutines + LifecycleScope
-Min SDK	25
-Target SDK	34
-📸 Screenshots (optional section for your repo later)
-Identify Screen	Results Screen
+Image preview before submission
 
-	
-⚙️ Setup Instructions
-1️⃣ Clone the Repository
-git clone https://github.com/<your-username>/RoLeaf.git
+Result cards for PlantNet matches, Trefle data, and Wikipedia summaries
+
+Scrollable and responsive layout
+
+UI theme aligned with RoLeaf branding
+
+Ability to remove mistakenly added images without breaking layout
+
+Reliability Enhancements
+
+OkHttp interceptor for safe JSON logging without consuming response bodies
+
+Automatic fallback to Trefle search endpoint when direct slug lookup fails
+
+Graceful handling of missing fields and partial results
+
+Debounced UI updates to prevent flicker during loading
+
+Tech Stack
+Languages & Frameworks
+
+Kotlin
+
+Jetpack Compose
+
+AndroidX ViewModel & Lifecycle
+
+Networking
+
+Retrofit
+
+Gson
+
+OkHttp + Logging Interceptor
+
+Media & UI
+
+Glide for image loading
+
+Activity Result APIs for camera and gallery
+
+APIs Used
+
+PlantNet API – Plant identification using image recognition
+
+Trefle API – Botanical data (taxonomy, images, descriptions)
+
+Wikipedia API – Summary descriptions for species
+
+Project Structure
+app/
+ ├─ api/
+ │   ├─ PlantNetApi.kt
+ │   ├─ TrefleApi.kt
+ │   └─ WikipediaApi.kt
+ ├─ data/
+ │   └─ IdentificationRepository.kt
+ ├─ model/
+ │   ├─ PlantNet models
+ │   ├─ Trefle models
+ │   └─ WikiSummaryResponse.kt
+ ├─ ui/
+ │   ├─ screens/
+ │   │   ├─ InitialScreen.kt
+ │   │   └─ ResultScreen.kt
+ │   └─ components/
+ │       └─ ResultCards.kt
+ ├─ util/
+ │   └─ ImageUtils.kt
+ ├─ MainActivity.kt
+ ├─ Manifest.xml
+ └─ resources/
+     ├─ layout XML (for legacy views)
+     ├─ themes
+     └─ strings.xml
+
+Setup Instructions
+1. Clone the Repository
+git clone https://github.com/yourusername/RoLeaf.git
 cd RoLeaf
 
-2️⃣ Open in Android Studio
+2. Add API Keys
 
-Use Android Studio Hedgehog (or newer)
+Create a local.properties file (if one does not already exist):
 
-Open the cloned project folder
-
-3️⃣ Add Your API Keys
-
-In your gradle.properties file (not committed to GitHub):
-
-PLANTNET_API_KEY=your_plantnet_api_key_here
-TREFLE_API_KEY=your_trefle_api_key_here
+PLANTNET_API_KEY=your_key_here
+TREFLE_API_KEY=your_key_here
 
 
-These keys are securely passed to your app through build.gradle:
+The app’s build.gradle automatically injects these values.
 
-buildConfigField("String", "PLANTNET_API_KEY", "\"${project.findProperty("PLANTNET_API_KEY") ?: ""}\"")
-buildConfigField("String", "TREFLE_API_KEY", "\"${project.findProperty("TREFLE_API_KEY") ?: ""}\"")
+3. Build and Run
 
+Open in Android Studio, sync Gradle, and run on an emulator or physical device.
 
-🔒 Never commit your actual API keys to GitHub.
+How It Works
 
-🏗️ Building the App
+User selects one or more plant organs
 
-Sync Gradle files
+Image(s) are sent to PlantNet
 
-Ensure camera and storage permissions are granted on first run
+Top species results are displayed with confidence scores
 
-Connect a physical Android device or emulator
+RoLeaf retrieves enhanced species data from Trefle
 
-Click Run ▶️
+If slug lookup fails, search endpoint is used
 
-🧠 How It Works
+Slugs are sanitized automatically
 
-User selects or captures a plant photo.
+A Wikipedia summary is fetched and displayed
 
-The app sends the image to PlantNet API, which returns:
+All results are shown in structured cards
 
-Species name
+Recent Improvements (Memory of Project Development)
 
-Family & genus
+Added safe slug sanitization to avoid Trefle lookup failures
 
-Confidence score
+Implemented automatic search fallback when exact match fails
 
-The app uses that scientific name to query Trefle.io for botanical data:
+Added OkHttp JSON logging interceptor
 
-Growth, soil, humidity, flower/fruit details
+Dynamic Trefle result display (fields shown only if present)
 
-If Trefle data is incomplete, it fetches a Wikipedia summary as fallback.
+Improved image loading and fallback logic for missing Trefle images
 
-All results are formatted and displayed with progress bars and icons.
+Updated UI theming to match the RoLeaf results screen
 
-📁 Project Structure
-app/
- ├── manifests/
- │   └── AndroidManifest.xml
- ├── java/com/example/roleaf/
- │   ├── MainActivity.kt        # Core logic & API calls
- │   ├── models/                # (Optional) future data model separation
- │   └── adapters/              # (Optional) UI expansion
- ├── res/
- │   ├── layout/activity_main.xml
- │   ├── values/strings.xml
- │   └── xml/file_paths.xml
- └── build.gradle
+Added functionality for users to remove mistakenly added images
 
-🔍 APIs Used
-API	Purpose	Docs
-PlantNet	Image-based plant identification	PlantNet Docs
+Roadmap
 
-Trefle.io	Botanical data and taxonomy	Trefle API Docs
+Offline caching of recent identifications
 
-Wikipedia REST API	Readable plant summaries	Wikipedia REST Docs
-📜 Permissions Required
+Search history
 
-Declared in AndroidManifest.xml:
+Light/Dark theme dynamic switching
 
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.CAMERA" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+Auto-crop and background removal for plant photos
 
+License
 
-⚠️ Android 13+ requires the new READ_MEDIA_IMAGES permission for gallery access.
-
-🧩 File Provider Configuration
-
-To enable safe camera access:
-
-<provider
-    android:name="androidx.core.content.FileProvider"
-    android:authorities="${applicationId}.provider"
-    android:exported="false"
-    android:grantUriPermissions="true">
-    <meta-data
-        android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/file_paths" />
-</provider>
-
-
-And in res/xml/file_paths.xml:
-
-<paths xmlns:android="http://schemas.android.com/apk/res/android">
-    <cache-path name="images" path="." />
-</paths>
-
-🚀 Future Enhancements
-
-Offline caching of last identification
-
-Multi-language support
-
-Plant care suggestions (based on species)
-
-AR overlay for live plant detection
-
-Dark mode UI
-
-👨‍💻 Author
-
-Rohin Maharaj
-📧 contact@roleaf.com
-
-🌐 GitHub Profile
-
-🪴 License
-
-This project is licensed under the MIT License — feel free to use, modify, and share with attribution.
-
-MIT License © 2025 Rohin Maharaj
-
+This project is open-source and available under the MIT License.
